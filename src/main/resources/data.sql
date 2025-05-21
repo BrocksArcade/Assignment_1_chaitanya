@@ -1,0 +1,1 @@
+insert into QuestionsTB(qid , "questionName") values (1,'Dummy Question1');

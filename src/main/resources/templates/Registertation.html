@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <Center>
+        <h1>Welcome to Questionaire </h1>
+        <h2>Please register below for attempting exam</h2>
+        <div class="errorpage">
+            <p th:text="${errors}"></p>
+        </div>
+        <form action="register" method="post">
+            <label for="uname">Enter Username</label>
+            <input type="text" placeholder="Enter username" name="uname" required/>
+            <label for="emails">Enter Email</label>
+            <input type="text" placeholder="Enter email" name="emails" required/>
+            <input type="submit" value="Register" />
+        </form>
+    </Center>
+</body>
+
+</html>
