@@ -32,16 +32,16 @@ public class QuestionsController {
 
     @GetMapping("/questionspage")
     public String showQuestionspage(Model model, HttpSession session) {
-        if(session.getAttribute("UserModel_c")!=null)
-       { var shuffledList = questionService.getAllQuestions();
-        Collections.shuffle(shuffledList, new Random(10));
+        if (session.getAttribute("UserModel_c") != null) {
+            var shuffledList = questionService.getAllQuestions();
+            Collections.shuffle(shuffledList, new Random(10));
 
-        model.addAttribute("questions", shuffledList);
-        model.addAttribute("answerObject", new ResultSubmittionModel());
+            model.addAttribute("questions", shuffledList);
+            model.addAttribute("answerObject", new ResultSubmittionModel());
 
-        return "Questionaire.html";}
-        else{
-            //unwanted access
+            return "Questionaire.html";
+        } else {
+            // unwanted access
             return "ErrorPage";
         }
     }
@@ -57,17 +57,18 @@ public class QuestionsController {
         } else {
             UserResultModel resultModel = new UserResultModel();
             resultModel.setMarksobtained(marks);
-            long halfmarks = Double
-                    .doubleToRawLongBits(questionService.getTotalMarks(answerObject.getAnswermap()) * 0.5);
+            long halfmarks = (long) (questionService.getTotalMarks(answerObject.getAnswermap()) * 0.5);
             resultModel.setPassed(marks > halfmarks);
             resultModel.setUID(((UserModel) session.getAttribute("UserModel_c")).getId());
+
             // calcualting rank before hand for displaying on webpage next
-            resultservice.getresultrepo().save(resultModel);
+            resultservice.saveResultPlain(resultModel);
             resultModel.setRankobtained(
                     (Integer.parseInt(String.valueOf(resultservice.calculateAndReturnRank(resultModel)))));
             // Above is just for showing on next page
             // below is to make bulk rank changes easily since SQL has ranking
-            resultservice.saveResult(resultModel);
+            resultservice.calculateAndSaveRanksInBulk();
+            // resultservice.saveResultWRank(resultModel);
             // caching for later useage
             session.setAttribute("resultmodel", resultModel);
 

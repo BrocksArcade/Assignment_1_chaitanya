@@ -40,7 +40,7 @@ public class QuestionService {
             } else {
                 return -1;
             }
-            return marks;
+          
         }
         return marks;
 
@@ -50,7 +50,7 @@ public class QuestionService {
         for (Entry<Long, String> entry_ : result.entrySet()) {
             var question = repo.findById(entry_.getKey());
             marks+=question.get().getMarks();
-            return marks;
+           
         }
         return marks;
 

@@ -1,5 +1,6 @@
 package com.questionairepro.demo.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,13 +12,15 @@ import jakarta.persistence.Table;
 
 public class UserResultModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long resultid;
+    @Column(nullable = false,name = "RESULTID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long resultid=0;
     
     Long UID;
     long marksobtained;
     int rankobtained;
-    boolean isPassed;
+    @Column(nullable = false,name = "ISPASSED")
+    boolean isPassed=false;
     
     
     public UserResultModel(long resultid, Long uID, long marksobtained, int rankobtained, boolean isPassed) {
