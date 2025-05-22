@@ -11,7 +11,9 @@ import com.questionairepro.demo.models.UserResultModel;
 public interface ResultRepo extends JpaRepository<UserResultModel, Long> {
     boolean existsByUID(Long UID);
 
-    @Query(value = "SELECT * FROM RESULTB ORDER BY (MARKSOBTAINED) DESC", nativeQuery = true)
+    
+    @Query(name = "getDenseRanks", nativeQuery = true)
+
     List<UserResultModel> getResultsByOrder();
 
     Optional<UserResultModel> findByUID(Long uid);

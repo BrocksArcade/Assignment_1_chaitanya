@@ -1,5 +1,7 @@
 package com.questionairepro.demo.auth;
 
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,20 +34,19 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    
     public String fetchUserDetails(HttpSession session, Model model, @RequestParam(name = "uname") String uname,
             @RequestParam(name = "emails")  String emails) {
+                if(uname.trim().length()<2)
+                {
+                      model.addAttribute("errors", "Enter Length should be greater than one");
+            return "Registertation.html";
+                }
                 
-                
-                
-        // test cases as defined in world
-        // if( uname==null ||uname.isEmpty())
-        // {
-        // model.addAttribute("errors", "UserName Cannot be empty");
-        // return "Registertation.html";
-        // }
-      
+       Pattern pattern = Pattern.compile("^[a-zA-Z0-9.]+@{1}[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", Pattern.CASE_INSENSITIVE);
+//    (emails.contains("@") && emails.contains(".") && emails.length() > 3)
 
-        if ((emails.contains("@") && emails.contains(".") && emails.length() > 3)) {
+        if (Pattern.matches("^[a-zA-Z0-9.]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",emails) ) {
             
             // Store this data to session
             UserModel userModel= usermodelService.doRegister(emails, uname);

@@ -36,7 +36,7 @@ public class QuestionService {
             var question = repo.findById(entry_.getKey());
             if (question.isPresent()) {
                 if(question.get().getCorrectOptionText().equalsIgnoreCase(entry_.getValue()))
-                 marks = question.get().getMarks();
+                 marks += question.get().getMarks();
             } else {
                 return -1;
             }

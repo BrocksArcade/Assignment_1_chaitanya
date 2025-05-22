@@ -34,7 +34,7 @@ public class QuestionsController {
     public String showQuestionspage(Model model, HttpSession session) {
         if (session.getAttribute("UserModel_c") != null) {
             var shuffledList = questionService.getAllQuestions();
-            Collections.shuffle(shuffledList, new Random(10));
+            Collections.shuffle(shuffledList, new Random());
 
             model.addAttribute("questions", shuffledList);
             model.addAttribute("answerObject", new ResultSubmittionModel());
@@ -63,8 +63,7 @@ public class QuestionsController {
 
             // calcualting rank before hand for displaying on webpage next
             resultservice.saveResultPlain(resultModel);
-            resultModel.setRankobtained(
-                    (Integer.parseInt(String.valueOf(resultservice.calculateAndReturnRank(resultModel)))));
+           resultModel=resultservice.calculateAndReturnRank(resultModel);
             // Above is just for showing on next page
             // below is to make bulk rank changes easily since SQL has ranking
             resultservice.calculateAndSaveRanksInBulk();

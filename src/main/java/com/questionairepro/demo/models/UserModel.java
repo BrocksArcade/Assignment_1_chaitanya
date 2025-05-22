@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 
 @Entity(name = "USERDETAILSTB")
 @Table(name="USERDETAILSTB")
@@ -17,6 +18,7 @@ public class UserModel {
     @Column(name="USERNAME")
     private String username;
     @Column(name = "EMAIL_STRING")
+    @Email
     private String emailString;
     
     public UserModel(long id, String username, String emailString) {
