@@ -16,6 +16,8 @@ public interface ResultRepo extends JpaRepository<UserResultModel, Long> {
 
     List<UserResultModel> getResultsByOrder();
 
+    
     Optional<UserResultModel> findByUID(Long uid);
+    
 
 }

@@ -12,6 +12,16 @@
             background-size: cover;
             background-repeat: inherit;
         }
+        
+        a {
+            transition: scale 1s;
+        }
+        
+        a:hover {
+            transition: linear;
+            transition-duration: 80ms;
+            scale: 1.2;
+        }
     </style>
 
 </head>
@@ -25,7 +35,7 @@
         <p class="fs-3" th:text="|MarksObtained: ${marks}|"></p>
         <p class="fs-3" th:text="|result: ${res}|"></p>
         <p class="fs-3" th:text="|Rank: ${rank}|"></p>
-        <a th:href="@{/allresults}" class="bg-success text-white p-2">All Results</a>
+        <a th:href="@{/allresults}" class="bg-success but text-white p-2">All Results</a>
     </div>
 
 </body>

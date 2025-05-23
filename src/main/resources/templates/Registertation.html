@@ -13,6 +13,16 @@
             background-size: cover;
             background-repeat: inherit;
         }
+        
+        .btn {
+            transition: scale 1s;
+        }
+        
+        .btn:hover {
+            transition: linear;
+            transition-duration: 80ms;
+            scale: 1.2;
+        }
     </style>
 </head>
 
@@ -34,17 +44,17 @@
                     <h2>Registeration Form</h2>
                     <div class="container  h-50 d-flex justify-content-around ">
                         <div class="d-flex justify-content-center my-1 w-50">
-                            <img th:src="@{/surveyicon.jpg}" class="img-thumbnail fit-content w-50 " alt="A responsive image that scales" />
+                            <img th:src="@{/surveyicon.jpg}" class="img-thumbnail img-fluid fit-content w-50 " alt="Suervt icon" />
                         </div>
 
                         <div class="row d-flex flex-column justify-content-center align-items-center container w-50 ">
 
                             <!-- <label for="uname ">Enter Username</label> -->
-                            <input type="text" class="form-control mb-3" placeholder="Enter username" minlength="2" name="uname" required />
+                            <input type="text" class="form-control mb-3" placeholder="Enter username" minlength="2" maxlength="80" name="uname" required />
                             <!-- <label for="emails ">Enter Email</label> -->
                             <input type="email" class="form-control mb-3" placeholder="Enter email " name="emails" required/>
 
-                            <input type="submit" class="form-control mb-3 w-50 btn btn-success" value="Register " />
+                            <input type="submit" class="form-control mb-3 w-50 btn btn-success" value="Register" />
                         </div>
                     </div>
 

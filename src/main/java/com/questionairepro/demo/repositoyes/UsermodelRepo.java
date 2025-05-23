@@ -6,10 +6,11 @@ import org.springframework.stereotype.Repository;
 import com.questionairepro.demo.models.UserModel;
 import java.util.List;
 
-
 @Repository
-public interface  UsermodelRepo extends JpaRepository<UserModel,Long> {
-    
+public interface UsermodelRepo extends JpaRepository<UserModel, Long> {
+
      List<UserModel> findByEmailString(String emailString);
-    
+
+     List<UserModel> findByUsername(String username);
+
 }

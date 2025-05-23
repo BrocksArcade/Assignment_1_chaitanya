@@ -38,12 +38,28 @@ public class ExamResultController {
             List<UserModel> allusers = resultService.getAllUsersByResult(allresults);
             model.addAttribute("results", allresults);
             model.addAttribute("myuser", allusers);
-            
+
         } else {
             model.addAttribute("msg", "No Other Records Found");
         }
 
         return "LeaderBoard";
     }
+
+    // @PostMapping("/allresults")
+    // public String showAllResultWQuery(@RequestBody String qry, Model model) {
+
+    //     List<UserResultModel> allresults = resultService.getAllResultsByRank();
+    //     if (allresults.size() > 0) {
+    //         List<UserModel> allusers = resultService.getAllUsersByResult(allresults);
+            
+    //         model.addAttribute("results", allresults);
+    //         model.addAttribute("myuser", allusers);
+
+    //     } else {
+    //         model.addAttribute("msg", "No Other Records Found");
+    //     }
+    //     return "LeaderBoard";
+    // }
 
 }

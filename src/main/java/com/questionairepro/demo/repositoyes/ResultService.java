@@ -42,6 +42,10 @@ public class ResultService {
         return userlist;
 
     }
+    public List<UserModel> findAllResultByName(String username)
+    {
+        return usermodelService.usermodelRepo.findByUsername(username);
+    }
 
     public void saveResultWRank(UserResultModel res) {
 
